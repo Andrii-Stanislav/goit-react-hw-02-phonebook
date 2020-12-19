@@ -18,11 +18,11 @@ class ContactForm extends Component {
         event.preventDefault();
 
         this.props.onSubmit({ id: uuidv4() , ...this.state, })
-        
+    
         this.setState({
             name: '',
             number: '',
-        })
+        })      
     }
 
     render() {

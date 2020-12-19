@@ -22,24 +22,30 @@ class App extends Component {
   }
 
   createNewContact = ({ id, name, number }) => {
-    if (this.verifyNewContact(name)) {
+    if (this.verifyNewContact(name, number )) {
       this.setState(({ contacts }) => ({
         contacts: [...contacts, { id, name, number }],
       }))
     }
-    else {
-      alert(`${name} is already in contacts`)
-    }
   }
 
-  verifyNewContact = (newName) => {
+  verifyNewContact = (newName, number) => {
     let verify = true;
 
     this.state.contacts.forEach(
       ({ name }) => {
-        if (name.toLowerCase() === newName.toLowerCase()) { verify = false }
+        if (name.toLowerCase() === newName.toLowerCase())
+        {
+          alert(`${name} is already in contacts`);
+          verify = false
+        }
       });
    
+    if (newName === '' || number === '') {
+      alert(`Write all info`);
+      verify = false
+    }
+    
     return verify;
   }
 
